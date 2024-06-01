@@ -25,14 +25,39 @@ class CustomAgents:
 
     def content_gatherer(self):
         return Agent(
-            role="Senior Research Analyst",
-            goal=dedent(f"""Go through a detailed search to find and analyst latest updates on the topic provided"""),
-            backstory=dedent(f"""You have 10 years of experience of researching on topics. you explore latest technologies and development for the topic provided."""),
+            role="Content Researcher",
+            goal=dedent("""Find latest news or updates on the topic provided"""),
+            backstory=dedent(f"""You have 20 years of experience of researching on topics. you explore latest technologies and development for the topic provided."""),
             
             tools=[customTools.search_internet],
-            allow_delegation=False,
+            allow_delegation=True,
+            verbose=True,
+            llm=self.llm,
+        )
+    
+
+    def analyse_content(self):
+        return Agent(
+            role="Senior Analyst",
+            goal=dedent(f"""Go through each content,analyse and generate a detailed markdown report on the topic provided"""),
+            backstory=dedent(f"""With a critical eye and a knack for distilling complex information, you provide deep insightful
+            analyses for the topic provided.if required you can provide comparison of products or services"""),
+            
+            tools=[customTools.search_internet],
+            allow_delegation=True,
             verbose=True,
             llm=self.llm,
         )
 
    
+    def blog_writer(self):
+        return Agent(
+            role="Blog Content Compiler",
+
+            goal=dedent(f"""Compile analysed content provided by senior Analyst into a final blog with markdown"""),
+
+            backstory=dedent(f"""As a experienced content writer ,you meticulously arrange and format the content,
+            ensuring a coherent and visually appealing presentation that captivates our readers. Make your to cover all points and a provide a conclusion in the end"""),
+            verbose=True,
+            llm=self.llm,
+        )        

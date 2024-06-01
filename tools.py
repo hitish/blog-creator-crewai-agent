@@ -17,3 +17,16 @@ class customTools:
         response = exa.search_and_contents(f"{query}",type="neural", use_autoprompt=True, num_results=5,highlights=True)
         print(response)
         return response
+    
+
+    @tool("Search the internet")
+    def search_content(query):
+        """Useful to search the internet
+        search for detailed content for each heading"""
+        print("Searching the internet...")
+        exa = Exa(api_key=os.environ['EXA_API_KEY'])
+        response = exa.search_and_contents(f"{query}",type="keyword", use_autoprompt=True, num_results=5,text={
+    "max_characters": 1000
+  })
+        print(response)
+        return response

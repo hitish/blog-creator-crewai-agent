@@ -17,7 +17,7 @@ class CustomTasks:
         """
             ),
             agent=agent,
-            expected_output="""A list of top news story about the topic provided with  titles, URLs, and a brief summary for each story from the past 7days. 
+            expected_output="""A list of top news story about the topic provided with  titles, URLs, and a brief summary for each story. 
                 Example Output: 
                 [
                     {  'title': 'AI takes spotlight in Super Bowl commercials', 
@@ -28,3 +28,55 @@ class CustomTasks:
                 ]
             """
         )  
+
+
+
+        def analyse_content(self, agent, context):
+            return Task(
+                description=dedent(
+                    f"""Analyse Each content and ensure analysed content should be well formatted.  Find out 4 sub topics in which we can divide content and then format article containing four sub topics.Also each article should contain conclusion in the end   """
+                ),
+                agent=agent,
+                context=context,
+                expected_output="""A markdown-formatted analysis for each content, including 4 subtopic 
+                    Example Output: 
+                    '## AI takes spotlight in Super Bowl commercials\n\n
+                    **Selected Subtopic 1:
+                    ** AI made a splash in this year\'s Super Bowl commercials...\n\n
+                    **Selected Subtopic 2:
+                    ** AI made a splash in this year\'s Super Bowl commercials...\n\n
+                    **Selected Subtopic 3:
+                    - Microsoft\'s Copilot spot showcased its AI assistant...\n\n
+                    **Selected Subtopic 4:
+                    - Microsoft\'s Copilot spot showcased its AI assistant...\n\n
+                    **Conclusion :** While AI-related ads have been rampant over the last year, its Super Bowl presence is a big mainstream moment.\n\n'
+                """
+            )  
+
+        def compile_blog(self, agent, context):
+            return Task(
+                description=dedent(
+                    f"""Compile all content to create a blog   """
+                ),
+                agent=agent,
+                context=context,
+                expected_output=f"""A complete blog in markdown format, with a consistent style and layout.
+                    Example Output: 
+                    {query}
+                    ## List of subheadings
+                        *Selected Subtopic 1:
+                        *Selected Subtopic 2:
+                        *Selected Subtopic 3:
+                        *Selected Subtopic 4:
+                    '## AI takes spotlight in Super Bowl commercials\n\n
+                    **Selected Subtopic 1:
+                    ** AI made a splash in this year\'s Super Bowl commercials...\n\n
+                    **Selected Subtopic 2:
+                    ** AI made a splash in this year\'s Super Bowl commercials...\n\n
+                    **Selected Subtopic 3:
+                    - Microsoft\'s Copilot spot showcased its AI assistant...\n\n
+                    **Selected Subtopic 4:
+                    - Microsoft\'s Copilot spot showcased its AI assistant...\n\n
+                    **Conclusion :** While AI-related ads have been rampant over the last year, its Super Bowl presence is a big mainstream moment.\n\n'
+                """
+            )  
