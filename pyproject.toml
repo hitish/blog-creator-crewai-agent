@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "ai-agent"
+version = "0.1.0"
+description = "Creating my first ai agent"
+authors = ["y"]
+license = "mit"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.12,<=3.13"
+crewai = "^0.30.0"
+python-dotenv = "^1.0.1"
+langchain-google-genai = "^1.0.1"
+crewai_tools = "^0.30.0"
+
+
+
+
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
