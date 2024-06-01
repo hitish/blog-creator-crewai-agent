@@ -9,33 +9,22 @@ class CustomTasks:
     def __tip_section(self):
         return "If you do your BEST WORK, I'll give you a $10,000 commission!"
 
-    def task_1_name(self, agent, var1, var2):
+    def find_content(self, agent, query):
         return Task(
             description=dedent(
-                f"""
-            Do something as part of task 1
-            
-            {self.__tip_section()}
-    
-            Make sure to use the most recent data as possible.
-    
-            Use this variable: {var1}
-            And also this variable: {var2}
+                f"""Fetch latest content about the topic provided. try to provide current information. try to gather information from different companies or websites. Find websites and content which explain the topic. if query is asking for top products find websites or content which provide product list according to query
+                    Topic provided to do research is : {query}
         """
             ),
             agent=agent,
-        )
-
-    def task_2_name(self, agent):
-        return Task(
-            description=dedent(
-                f"""
-            Take the input from task 1 and do something with it.
-                                       
-            {self.__tip_section()}
-
-            Make sure to do something else.
-        """
-            ),
-            agent=agent,
-        )
+            expected_output="""A list of top news story about the topic provided with  titles, URLs, and a brief summary for each story from the past 7days. 
+                Example Output: 
+                [
+                    {  'title': 'AI takes spotlight in Super Bowl commercials', 
+                    'url': 'https://example.com/story1', 
+                    'summary': 'AI made a splash in this year\'s Super Bowl commercials...'
+                    }, 
+                    {{...}}
+                ]
+            """
+        )  

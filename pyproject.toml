@@ -11,10 +11,8 @@ python = ">=3.12,<=3.13"
 crewai = "^0.30.0"
 python-dotenv = "^1.0.1"
 langchain-google-genai = "^1.0.1"
-crewai_tools = "^0.30.0"
-
-
-
+crewai_tools = "^0.2.1"
+exa_py ="^1.0.7"
 
 
 
