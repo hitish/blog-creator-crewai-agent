@@ -36,7 +36,7 @@ class CustomAgents:
         )
     
 
-    def analyse_content(self):
+    def content_analyser(self):
         return Agent(
             role="Senior Analyst",
             goal=dedent(f"""Go through each content,analyse and generate a detailed markdown report on the topic provided"""),

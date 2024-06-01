@@ -22,10 +22,10 @@ class customTools:
     @tool("Search the internet")
     def search_content(query):
         """Useful to search the internet
-        search for detailed content for each heading"""
+        search for detailed content for each content"""
         print("Searching the internet...")
         exa = Exa(api_key=os.environ['EXA_API_KEY'])
-        response = exa.search_and_contents(f"{query}",type="keyword", use_autoprompt=True, num_results=5,text={
+        response = exa.search_and_contents(f"{query}",type="keyword", use_autoprompt=True, num_results=3,text={
     "max_characters": 1000
   })
         print(response)

@@ -32,7 +32,8 @@ class CustomCrew:
 
         # Define your custom agents and tasks here
         content_gatherer = agents.content_gatherer()
-        #custom_agent_2 = agents.agent_2_name()
+        content_analyser = agents.content_analyser()
+        blog_writer = agents.blog_writer()
 
         # Custom tasks include agent name and variables as input
         find_content = tasks.find_content(
@@ -40,14 +41,21 @@ class CustomCrew:
             self.query
         )
 
-      #  custom_task_2 = tasks.task_2_name(
-      #      custom_agent_2,
-      #  )
+        analyse_content = tasks.analyse_content(
+            content_analyser,
+            [find_content]
+        )
+
+        compile_blog = tasks.compile_blog(
+            blog_writer,
+            [analyse_content]
+        )
+
 
         # Define your custom crew here
         crew = Crew(
-            agents=[content_gatherer],
-            tasks=[find_content],
+            agents=[content_gatherer,content_analyser,blog_writer],
+            tasks=[find_content,analyse_content,compile_blog],
             verbose=True,
         )
 

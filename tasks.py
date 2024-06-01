@@ -31,10 +31,10 @@ class CustomTasks:
 
 
 
-        def analyse_content(self, agent, context):
+    def analyse_content(self, agent, context):
             return Task(
                 description=dedent(
-                    f"""Analyse Each content and ensure analysed content should be well formatted.  Find out 4 sub topics in which we can divide content and then format article containing four sub topics.Also each article should contain conclusion in the end   """
+                    f"""Analyse Each content and ensure analysed content should be well formatted.  Find out 2 sub topics in which we can divide content and then format article containing four sub topics.Also each article should contain conclusion in the end. Atleast 3 formatted article should be created  """
                 ),
                 agent=agent,
                 context=context,
@@ -45,15 +45,12 @@ class CustomTasks:
                     ** AI made a splash in this year\'s Super Bowl commercials...\n\n
                     **Selected Subtopic 2:
                     ** AI made a splash in this year\'s Super Bowl commercials...\n\n
-                    **Selected Subtopic 3:
-                    - Microsoft\'s Copilot spot showcased its AI assistant...\n\n
-                    **Selected Subtopic 4:
                     - Microsoft\'s Copilot spot showcased its AI assistant...\n\n
                     **Conclusion :** While AI-related ads have been rampant over the last year, its Super Bowl presence is a big mainstream moment.\n\n'
                 """
             )  
 
-        def compile_blog(self, agent, context):
+    def compile_blog(self, agent, context):
             return Task(
                 description=dedent(
                     f"""Compile all content to create a blog   """
@@ -62,21 +59,16 @@ class CustomTasks:
                 context=context,
                 expected_output=f"""A complete blog in markdown format, with a consistent style and layout.
                     Example Output: 
-                    {query}
+                    Headline for the blog
                     ## List of subheadings
                         *Selected Subtopic 1:
                         *Selected Subtopic 2:
-                        *Selected Subtopic 3:
-                        *Selected Subtopic 4:
+                        *conclusion
                     '## AI takes spotlight in Super Bowl commercials\n\n
                     **Selected Subtopic 1:
                     ** AI made a splash in this year\'s Super Bowl commercials...\n\n
                     **Selected Subtopic 2:
-                    ** AI made a splash in this year\'s Super Bowl commercials...\n\n
-                    **Selected Subtopic 3:
-                    - Microsoft\'s Copilot spot showcased its AI assistant...\n\n
-                    **Selected Subtopic 4:
-                    - Microsoft\'s Copilot spot showcased its AI assistant...\n\n
+                    ** Microsoft\'s Copilot spot showcased its AI assistant...\n\n
                     **Conclusion :** While AI-related ads have been rampant over the last year, its Super Bowl presence is a big mainstream moment.\n\n'
                 """
             )  
